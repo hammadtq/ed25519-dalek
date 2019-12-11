@@ -36,7 +36,7 @@ use crate::signature::*;
 
 /// An ed25519 public key.
 #[derive(Copy, Clone, Default, Eq, PartialEq)]
-pub struct PublicKey(CompressedEdwardsY, EdwardsPoint);
+pub struct PublicKey(pub(crate) CompressedEdwardsY, pub(crate) EdwardsPoint);
 
 impl Debug for PublicKey {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
@@ -86,6 +86,12 @@ impl PublicKey {
     #[inline]
     pub fn as_bytes<'a>(&'a self) -> &'a [u8; PUBLIC_KEY_LENGTH] {
         &(self.0).0
+    }
+
+    /// Return Edwards Point.
+    #[inline]
+    pub fn as_bytes<'a>(&'a self) -> &'a [u8; PUBLIC_KEY_LENGTH] {
+        &self.1
     }
 
     /// Construct a `PublicKey` from a slice of bytes.
