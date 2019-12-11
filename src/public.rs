@@ -36,7 +36,7 @@ use crate::signature::*;
 
 /// An ed25519 public key.
 #[derive(Copy, Clone, Default, Eq, PartialEq)]
-pub struct PublicKey(pub CompressedEdwardsY, pub EdwardsPoint);
+pub struct PublicKey(CompressedEdwardsY, EdwardsPoint);
 
 impl Debug for PublicKey {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
