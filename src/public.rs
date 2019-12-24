@@ -90,8 +90,8 @@ impl PublicKey {
 
     /// Return Edwards Point.
     #[inline]
-    pub fn get_edwards_point<'a>(&'a self) -> Result<EdwardsPoint, SignatureError> {
-        Ok(self.1)
+    pub fn get_edwards_point<'a>(&'a self) -> EdwardsPoint {
+        self.1
     }
 
     /// Construct a `PublicKey` from a slice of bytes.
